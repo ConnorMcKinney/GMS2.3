@@ -1,9 +1,8 @@
 {
   "resources": [
-    {"id":{"name":"TileSet1","path":"tilesets/TileSet1/TileSet1.yy",},"order":0,},
     {"id":{"name":"sIsotile","path":"sprites/sIsotile/sIsotile.yy",},"order":0,},
-    {"id":{"name":"Macros","path":"scripts/Macros/Macros.yy",},"order":0,},
-    {"id":{"name":"sTileset","path":"sprites/sTileset/sTileset.yy",},"order":1,},
+    {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},"order":1,},
+    {"id":{"name":"TileSet1","path":"tilesets/TileSet1/TileSet1.yy",},"order":0,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [

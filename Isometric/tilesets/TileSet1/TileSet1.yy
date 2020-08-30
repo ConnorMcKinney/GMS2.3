@@ -1,8 +1,8 @@
 {
   "name": "TileSet1",
   "spriteId": {
-    "name": "sTileset",
-    "path": "sprites/sTileset/sTileset.yy",
+    "name": "Sprite2",
+    "path": "sprites/Sprite2/Sprite2.yy",
   },
   "tileWidth": 32,
   "tileHeight": 32,
