@@ -9,7 +9,7 @@ function init_inputs() {
 	automatically assign the ID numbers of each of the input actions. To learn more about enumerators,
 	you can just middle-click the word 'enum' below. */
 
-	enum input_action { up, down, left,	right };
+	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls };
 
 	/* Next, we're going to initialize a few different input *states* in the same way.
 
@@ -26,6 +26,7 @@ function init_inputs() {
 	globalvar INPUT_STATES;			INPUT_STATES		= 0;	// This will be a 2D array that holds the state of each input action for each player.
 	globalvar INPUT_KEYBOARD_KEYS;	INPUT_KEYBOARD_KEYS	= 0;	// This will be a 1D array that holds the keyboard hotkey assignments for each input action.
 	globalvar INPUT_GAMEPAD_KEYS;	INPUT_GAMEPAD_KEYS	= 0;	// This will be a 1D array that holds the gamepad hotkey assignments for each input action.
+	globalvar INPUT_MOUSE_BUTTONS; INPUT_MOUSE_BUTTONS = 0;		// 1D array that holds mouse button assignments
 
 	// Next, we'll create a list that will let us store the control method assigned to each player.
 	globalvar PLAYER_GAMEPAD_IDS;		PLAYER_GAMEPAD_IDS	= ds_list_create(); 
@@ -39,11 +40,25 @@ function init_inputs() {
 
 	Next, we'll run a custom script called input_create() to initialize our different inputs. Go ahead
 	and pop open the input_create() script to see what it does! */
-
-	input_create(input_action.up,		ord("W"), gp_padu);
-	input_create(input_action.down,		ord("S"), gp_padd);
-	input_create(input_action.left,		ord("A"), gp_padl);
-	input_create(input_action.right,	ord("D"), gp_padr);
+	
+	/*	http://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/keyboard%20input/
+		https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/gamepad%20input/index.html
+		https://docs.yoyogames.com/source/dadiospice/002_reference/mouse,%20keyboard%20and%20other%20controls/mouse%20input/index.html
+	*/
+		
+	
+	//up, down, left,	right, shoot, dodge, build, menu, inventory, controls
+	//order is keyboard, gamepad, mouse
+	input_create(input_action.up,		ord("W"), gp_axislv, noone);
+	input_create(input_action.down,		ord("S"), gp_axislv, noone);
+	input_create(input_action.left,		ord("A"), gp_axisrh, noone);
+	input_create(input_action.right,	ord("D"), gp_axisrh, noone);
+	input_create(input_action.shoot,	vk_space, gp_shoulderr, mb_left);
+	input_create(input_action.dodge,	noone, 	gp_face1, mb_right);
+	input_create(input_action.menu,		vk_escape, gp_start, noone);
+	input_create(input_action.inventory, ord("I"), 	gp_face3, noone);
+	input_create(input_action.controls,	vk_f1, noone, , noone);
+	// select is used to disconnect a controller
 
 	/* We have initialized all of our input actions and given them keyboard and gamepad keys.
 

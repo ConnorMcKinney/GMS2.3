@@ -110,7 +110,11 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			
 			var this_input_button = INPUT_GAMEPAD_KEYS[this_input_action];
 			
-			if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
+			if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
+				if (gamepad_axis_value(this_gamepad_id, this_input_action) != 0) {
+					INPUT_STATES[player_id, this_input_action] = input_state.pressed;
+				}
+			}else if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
 				INPUT_STATES[player_id, this_input_action] = input_state.pressed;	
 			}
 			else if gamepad_button_check(this_gamepad_id, this_input_button) {
