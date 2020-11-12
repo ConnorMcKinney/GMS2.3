@@ -1,3 +1,4 @@
+/// @description Pressed evaluated only once every time the key is depressed
 /// @arg player_id
 /// @arg input_id
 function input_pressed(argument0, argument1) {

@@ -79,7 +79,6 @@
     {"id":{"name":"obj_blood","path":"objects/obj_blood/obj_blood.yy",},"order":0,},
     {"id":{"name":"con_blood","path":"objects/con_blood/con_blood.yy",},"order":1,},
     {"id":{"name":"ogun_hud","path":"objects/ogun_hud/ogun_hud.yy",},"order":0,},
-    {"id":{"name":"oInput","path":"objects/oInput/oInput.yy",},"order":1,},
     {"id":{"name":"room0","path":"rooms/room0/room0.yy",},"order":0,},
   ],
   "Options": [

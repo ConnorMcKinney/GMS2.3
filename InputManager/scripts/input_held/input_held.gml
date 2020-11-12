@@ -1,3 +1,4 @@
+/// @description Fires every frame the key is depressed
 /// @arg player_id
 /// @arg input_id
 /// @arg [count_press_as_hold=true]
