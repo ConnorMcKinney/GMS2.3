@@ -3,15 +3,15 @@ var iid = global.mouse_slot[# 0, 0];
 var amount = global.mouse_slot[# 0, 1];
 var list_to_check = global.mouse_slot[# 0, 2];
 
-show_debug_message(0 == item.none);
-show_debug_message(0 == iid);
-show_debug_message(item.none == iid);
-//show_debug_message(typeof(item.none));
-//show_debug_message(typeof(iid));
+//show_debug_message(0 == item.none);
+//show_debug_message(0 == iid);
+//show_debug_message(item.none == iid);
+////show_debug_message(typeof(item.none));
+////show_debug_message(typeof(iid));
 
-//show_debug_message(global.item_index);
-//show_debug_message(global.upgrade_index);
-show_debug_message("----");
+////show_debug_message(global.item_index);
+////show_debug_message(global.upgrade_index);
+//show_debug_message("----");
 
 if(iid != item.none){
 	if(list_to_check == global.item_index){

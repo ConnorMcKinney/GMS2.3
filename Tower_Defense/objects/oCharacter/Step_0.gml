@@ -1,8 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 if(can_move){
-	axisH = keyboard_check(ord("D")) - keyboard_check(ord("A"))
-	axisV = keyboard_check(ord("S")) - keyboard_check(ord("W"))
+	if (keyboard) {	
+	axisH = input_held(player_id, input_action.right)	-input_held(player_id, input_action.left);
+	axisV = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
+
+	} else {
+		axisH = INPUT_STATES[player_id, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
+		axisV = INPUT_STATES[player_id, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
+		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_rx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ry]))
+	}
 }else{
 	axisH = 0
 	axisV = 0
@@ -123,8 +130,7 @@ if(!dodging && !on_wall){
 depth = -bbox_bottom
 
 //show_debug_message("Player depth: " + string(depth));
-
-if(mouse_check_button(mb_left) && script_execute(can_shoot)){
+if(INPUT_STATES[player_id, input_action.shoot] != input_state.none && script_execute(can_shoot)){
 	if(!weapon[| weapon_stats.shooting]){
 		weapon[| weapon_stats.shooting] = true;
 		alarm[0] = 1;

@@ -17,6 +17,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"oTower1","path":"objects/oTower1/oTower1.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":992.0,"y":736.0,"resourceVersion":"1.0","name":"inst_2D34123","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"oItem_Setup","path":"objects/oItem_Setup/oItem_Setup.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":8.0,"y":736.0,"resourceVersion":"1.0","name":"inst_7BEDA627","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"ogun_hud","path":"objects/ogun_hud/ogun_hud.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":944.0,"y":616.0,"resourceVersion":"1.0","name":"inst_268C0A4D","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"o_init","path":"objects/o_init/o_init.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":40.0,"y":736.0,"resourceVersion":"1.0","name":"inst_5BDCEBA2","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":8,"gridY":8,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Shop","tags":[],"resourceType":"GMRInstanceLayer",},
     {"pathId":{"name":"path1","path":"paths/path1/path1.yy",},"colour":4278190335,"visible":false,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":8,"gridY":8,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Path_1","tags":[],"resourceType":"GMRPathLayer",},
     {"instances":[
@@ -105,6 +106,7 @@
     {"name":"inst_6C9F390A","path":"rooms/room0/room0.yy",},
     {"name":"inst_7BEDA627","path":"rooms/room0/room0.yy",},
     {"name":"inst_268C0A4D","path":"rooms/room0/room0.yy",},
+    {"name":"inst_5BDCEBA2","path":"rooms/room0/room0.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

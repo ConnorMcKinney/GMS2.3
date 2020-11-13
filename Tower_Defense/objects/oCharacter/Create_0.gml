@@ -25,8 +25,11 @@ enum hud{
 }
 
 global.player = object_index;
-/// @description Settings and Variable init
-// You can write your code in this editor
+player_id = 0;				// Set by the gameplay manager
+keyboard = true;
+alarm[4] = 3;
+
+
 stats = ds_list_create();
 stats[| player_stats.total] = 0;
 //should populate in reverse index order
