@@ -7,8 +7,8 @@ if (keyboard) {
 	var intended_y_movement = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
 
 } else {
-	var intended_x_movement = INPUT_STATES[player_id, input_action.analogue_x]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_x]
-	var intended_y_movement = INPUT_STATES[player_id, input_action.analogue_y]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_y]
+	var intended_x_movement = INPUT_STATES[player_id, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
+	var intended_y_movement = INPUT_STATES[player_id, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
 	show_debug_message(string(intended_x_movement) + ", " + string(intended_y_movement))
 	show_debug_message(gamepad_axis_value(0, INPUT_GAMEPAD_KEYS[3]))
 }

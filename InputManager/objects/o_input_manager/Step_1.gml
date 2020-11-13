@@ -113,21 +113,27 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 //Need to add support for right stick			
 				if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
 					if (abs(gamepad_axis_value(this_gamepad_id, this_input_button))-DEADZONE > 0) {
-					
+						
 						INPUT_STATES[player_id, this_input_action] = input_state.held;
 						if (this_input_button == gp_axislh) {
-							INPUT_STATES[player_id, input_action.analogue_x] = gamepad_axis_value(this_gamepad_id, this_input_button);
+							INPUT_STATES[player_id, input_action.analogue_lx] = gamepad_axis_value(this_gamepad_id, this_input_button);
 						} 
 						else if (this_input_button == gp_axislv) {
-							INPUT_STATES[player_id, input_action.analogue_y] = gamepad_axis_value(this_gamepad_id, this_input_button);
+							INPUT_STATES[player_id, input_action.analogue_ly] = gamepad_axis_value(this_gamepad_id, this_input_button);
 						}
+						//else if (this_input_button == gp_axisrh) {
+						//	INPUT_STATES[player_id, input_action.analogue_rx] = gamepad_axis_value(this_gamepad_id, this_input_button);
+						//}
+						//else if (this_input_button == gp_axisrh {
+						//	INPUT_STATES[player_id, input_action.analogue_ry] = gamepad_axis_value(this_gamepad_id, this_input_button);
+						//}
 					} else {
 						INPUT_STATES[player_id, this_input_action] = input_state.none;
 						if (this_input_button == gp_axislh) {
-							INPUT_STATES[player_id, input_action.analogue_x] = 0;
+							INPUT_STATES[player_id, input_action.analogue_lx] = 0;
 						} 
 						else if (this_input_button == gp_axislv) {
-							INPUT_STATES[player_id, input_action.analogue_y] = 0;
+							INPUT_STATES[player_id, input_action.analogue_ly] = 0;
 						}
 					}
 				}
