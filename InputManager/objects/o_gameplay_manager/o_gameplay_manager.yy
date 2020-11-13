@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Input",
+    "path": "folders/Objects/Input.yy",
   },
   "resourceVersion": "1.0",
   "name": "o_gameplay_manager",

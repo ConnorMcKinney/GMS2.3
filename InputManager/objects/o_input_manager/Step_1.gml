@@ -112,26 +112,11 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			if (this_input_button != noone) {
 				
 				if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
-					if (abs(gamepad_axis_value(this_gamepad_id, this_input_button))-DEADZONE > 0) {
-						
-						//INPUT_STATES[player_id, this_input_action] = input_state.held;
-						INPUT_STATES[player_id, this_input_action] = gamepad_axis_value(this_gamepad_id, this_input_button);
-					} else {
-						//INPUT_STATES[player_id, this_input_action] = input_state.none;
-						INPUT_STATES[player_id, this_input_action] = 0;
-					}
+					INPUT_STATES[player_id, this_input_action] = controller_axis_check(this_gamepad_id, this_input_button);
+				} else {
+					INPUT_STATES[player_id, this_input_action] = controller_button_check(this_gamepad_id, this_input_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);	
 				}
-				else if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.pressed;	
-				}
-				else if gamepad_button_check(this_gamepad_id, this_input_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.held;	
-				}
-				else if gamepad_button_check_released(this_gamepad_id, this_input_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.released;	
-				}
-				else INPUT_STATES[player_id, this_input_action] = input_state.none;
-			
+
 				/* We have updated the state of this input action for this player in our INPUT_STATES array. */
 			}
 		}
@@ -139,21 +124,19 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			/* In this case, we have a keyboard connected. Let's check the keyboard for this input action! */
 			
 			var this_keyboard_button = INPUT_KEYBOARD_KEYS[this_input_action];
-			if (this_keyboard_button != noone) {
-				
-				if (toggles.this_input_action == true) {
-					if (INPUT_STATES[player_id, this_input_action] == input_state.pressed) {
-					}
-				}
-			
+			if (this_keyboard_button != noone) {			
 				if (this_keyboard_button == mb_left or this_keyboard_button == mb_right) {
-					INPUT_STATES[player_id, this_input_action] = mouse_button_check(this_keyboard_button);
+					INPUT_STATES[player_id, this_input_action] = mouse_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);
 				} else {
-					INPUT_STATES[player_id, this_input_action] = keyboard_button_check(this_keyboard_button);
+					INPUT_STATES[player_id, this_input_action] = keyboard_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);
 				}
-			
-				/* We have updated the state of this input action for this player in our INPUT_STATES array. */
+			} 
+			this_keyboard_button = INPUT_MOUSE_BUTTONS[this_input_action];
+			if (this_keyboard_button != noone) {	
+				INPUT_STATES[player_id, this_input_action] = mouse_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);	
 			}
+				
+			/* We have updated the state of this input action for this player in our INPUT_STATES array. */
 		}
 	}
 }

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Inputs",
-    "path": "folders/Scripts/Inputs.yy",
+    "name": "Input",
+    "path": "folders/Scripts/Input.yy",
   },
   "resourceVersion": "1.0",
-  "name": "input_pressed",
+  "name": "controller_checks",
   "tags": [],
   "resourceType": "GMScript",
 }

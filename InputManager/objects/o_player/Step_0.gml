@@ -23,12 +23,8 @@ if intended_x_movement != 0 || intended_y_movement != 0 {
 	functions to move the player a certain distance in a certain direction. */
 	
 	move_direction = point_direction(0,0,intended_x_movement,intended_y_movement);
-	x += lengthdir_x(move_speed, move_direction);
-	y += lengthdir_y(move_speed, move_direction);
-}
-
-if (INPUT_STATES[0, input_action.inventory]) {
-	show_debug_message("Inventory!");
+	x += move_speed*intended_x_movement;//lengthdir_x(move_speed, move_direction);
+	y += move_speed*intended_y_movement;//lengthdir_y(move_speed, move_direction);
 }
 
 /* Cool! We now have a player that is reading inputs using our input_action system, based on their

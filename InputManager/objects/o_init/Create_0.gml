@@ -19,7 +19,4 @@ PLAYER_COLORS[1] = c_yellow;
 PLAYER_COLORS[2] = c_fuchsia;
 PLAYER_COLORS[3] = c_lime;
 
-globalvar DEADZONE;
-DEADZONE = 0.15
-
 room_goto(rm_gameplay);
