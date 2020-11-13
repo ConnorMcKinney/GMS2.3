@@ -9,6 +9,4 @@ function input_held() {
 	var count_press_as_hold = true; if argument_count > 2 { count_press_as_hold = argument[2]; }
 
 	return INPUT_STATES[player_id, input_id] == input_state.held || (INPUT_STATES[player_id, input_id] == input_state.pressed && count_press_as_hold);
-
-
 }

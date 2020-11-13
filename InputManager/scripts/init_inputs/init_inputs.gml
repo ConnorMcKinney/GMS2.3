@@ -9,7 +9,7 @@ function init_inputs() {
 	automatically assign the ID numbers of each of the input actions. To learn more about enumerators,
 	you can just middle-click the word 'enum' below. */
 
-	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls };
+	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_x, analogue_y};
 
 	/* Next, we're going to initialize a few different input *states* in the same way.
 
@@ -49,15 +49,18 @@ function init_inputs() {
 	
 	//up, down, left,	right, shoot, dodge, build, menu, inventory, controls
 	//order is keyboard, gamepad, mouse
-	input_create(input_action.up,		ord("W"), gp_axislv, noone);
-	input_create(input_action.down,		ord("S"), gp_axislv, noone);
-	input_create(input_action.left,		ord("A"), gp_axisrh, noone);
-	input_create(input_action.right,	ord("D"), gp_axisrh, noone);
+	input_create(input_action.up,		ord("W"), noone, noone);
+	input_create(input_action.down,		ord("S"), noone, noone);
+	input_create(input_action.left,		ord("A"), noone, noone);
+	input_create(input_action.right,	ord("D"), noone, noone);
 	input_create(input_action.shoot,	vk_space, gp_shoulderr, mb_left);
 	input_create(input_action.dodge,	noone, 	gp_face1, mb_right);
+// need build
 	input_create(input_action.menu,		vk_escape, gp_start, noone);
 	input_create(input_action.inventory, ord("I"), 	gp_face3, noone);
 	input_create(input_action.controls,	vk_f1, noone, noone);
+	input_create(input_action.analogue_x,	noone, gp_axislh, noone);
+	input_create(input_action.analogue_y,	noone, gp_axislv, noone);
 	// select is used to disconnect a controller
 
 	/* We have initialized all of our input actions and given them keyboard and gamepad keys.

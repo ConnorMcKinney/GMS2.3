@@ -6,6 +6,9 @@ radius			= 50;				// This is used to draw the player as a circle.
 
 player_id		= 0;				// Here's the important variable: the PLAYER ID!
 
+alarm[0] = 3;
+keyboard = true;
+
 /* Each player object has a "player id," which corresponds to a slot in our PLAYER_GAMEPAD_IDS list.
 
 For example, a player with ID of 3 will look at slot 3 in the list.

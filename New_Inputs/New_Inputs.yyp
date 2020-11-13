@@ -92,8 +92,8 @@
     "children": [],
   },
   "RoomOrder": [
-    {"name":"Room1","path":"rooms/Room1/Room1.yy",},
     {"name":"room0","path":"rooms/room0/room0.yy",},
+    {"name":"Room1","path":"rooms/Room1/Room1.yy",},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

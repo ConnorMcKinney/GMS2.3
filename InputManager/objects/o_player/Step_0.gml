@@ -2,8 +2,16 @@
 you have going on in your game. We're going to use our input_held() script to see what this
 player intends to do -- move up, down, left, or right. Then, we'll apply that movement! */
 
-var intended_x_movement = input_held(player_id, input_action.right)	-input_held(player_id, input_action.left);
-var intended_y_movement = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
+if (keyboard) {	
+	var intended_x_movement = input_held(player_id, input_action.right)	-input_held(player_id, input_action.left);
+	var intended_y_movement = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
+
+} else {
+	var intended_x_movement = INPUT_STATES[player_id, input_action.analogue_x]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_x]
+	var intended_y_movement = INPUT_STATES[player_id, input_action.analogue_y]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_y]
+	show_debug_message(string(intended_x_movement) + ", " + string(intended_y_movement))
+	show_debug_message(gamepad_axis_value(0, INPUT_GAMEPAD_KEYS[3]))
+}
 
 /* Looking at the above, you may notice that we are doing something a bit goofy. We're subtracting the
 left input from the right, and the up from the down. That's because Game Maker treats "true" as 1 and "false" as 0.
