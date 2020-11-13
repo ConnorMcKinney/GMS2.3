@@ -9,8 +9,7 @@ if (keyboard) {
 } else {
 	var intended_x_movement = INPUT_STATES[player_id, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
 	var intended_y_movement = INPUT_STATES[player_id, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
-	show_debug_message(string(intended_x_movement) + ", " + string(intended_y_movement))
-	show_debug_message(gamepad_axis_value(0, INPUT_GAMEPAD_KEYS[3]))
+	//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_rx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ry]))
 }
 
 /* Looking at the above, you may notice that we are doing something a bit goofy. We're subtracting the
@@ -26,6 +25,10 @@ if intended_x_movement != 0 || intended_y_movement != 0 {
 	move_direction = point_direction(0,0,intended_x_movement,intended_y_movement);
 	x += lengthdir_x(move_speed, move_direction);
 	y += lengthdir_y(move_speed, move_direction);
+}
+
+if (INPUT_STATES[0, input_action.inventory]) {
+	show_debug_message("Inventory!");
 }
 
 /* Cool! We now have a player that is reading inputs using our input_action system, based on their

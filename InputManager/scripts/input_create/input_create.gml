@@ -16,7 +16,7 @@ function input_create(action, keyboard_key, gamepad_key, mouse_button) {
 	// First we'll assign the keyboard and gamepad keys to this input action.
 	INPUT_KEYBOARD_KEYS[the_input_action]	= the_input_hotkey;
 	INPUT_GAMEPAD_KEYS[the_input_action]	= the_input_gamepad_key;
-	INPUT_MOUSE_BUTTONS[the_input_action]	= the_input_mouse_key;
+	//INPUT_MOUSE_BUTTONS[the_input_action]	= the_input_mouse_key;
 
 	// Then, we'll set this input action's state to "none" for all players.
 	for ( var p = 0; p < MAX_PLAYERS; p++) {

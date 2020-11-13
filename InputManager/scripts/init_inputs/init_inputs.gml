@@ -10,6 +10,7 @@ function init_inputs() {
 	you can just middle-click the word 'enum' below. */
 
 	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_lx, analogue_ly, analogue_rx, analogue_ry};
+	enum toggles { false, false, false, false, false, false, true,  true, true,		 true, false, false, false, false}
 
 	/* Next, we're going to initialize a few different input *states* in the same way.
 
@@ -18,7 +19,7 @@ function init_inputs() {
 	For example, we will be able to know that Player 1 is holding the "Left" input, while
 	player 2 just released the "Up" input. But more on that later! For now, we'll just initialize.*/
 
-	enum input_state { none, pressed, held,	released };
+	enum input_state { none, pressed, held,	released, toggled };
 
 	// Now we'll set up some global variables to store all of our different bits of information.
 
@@ -26,7 +27,7 @@ function init_inputs() {
 	globalvar INPUT_STATES;			INPUT_STATES		= 0;	// This will be a 2D array that holds the state of each input action for each player.
 	globalvar INPUT_KEYBOARD_KEYS;	INPUT_KEYBOARD_KEYS	= 0;	// This will be a 1D array that holds the keyboard hotkey assignments for each input action.
 	globalvar INPUT_GAMEPAD_KEYS;	INPUT_GAMEPAD_KEYS	= 0;	// This will be a 1D array that holds the gamepad hotkey assignments for each input action.
-	globalvar INPUT_MOUSE_BUTTONS; INPUT_MOUSE_BUTTONS = 0;		// 1D array that holds mouse button assignments
+	//globalvar INPUT_MOUSE_BUTTONS; INPUT_MOUSE_BUTTONS = 0;		// 1D array that holds mouse button assignments
 
 	// Next, we'll create a list that will let us store the control method assigned to each player.
 	globalvar PLAYER_GAMEPAD_IDS;		PLAYER_GAMEPAD_IDS	= ds_list_create(); 
@@ -48,7 +49,7 @@ function init_inputs() {
 		
 	
 	//up, down, left,	right, shoot, dodge, build, menu, inventory, controls
-	//order is keyboard, gamepad, mouse
+	//order is keyboard, gamepad, mouse, toggle
 	input_create(input_action.up,		ord("W"), noone, noone);
 	input_create(input_action.down,		ord("S"), noone, noone);
 	input_create(input_action.left,		ord("A"), noone, noone);

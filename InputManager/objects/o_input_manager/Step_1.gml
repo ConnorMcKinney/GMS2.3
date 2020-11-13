@@ -110,31 +110,15 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			
 			var this_input_button = INPUT_GAMEPAD_KEYS[this_input_action];
 			if (this_input_button != noone) {
-//Need to add support for right stick			
+				
 				if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
 					if (abs(gamepad_axis_value(this_gamepad_id, this_input_button))-DEADZONE > 0) {
 						
-						INPUT_STATES[player_id, this_input_action] = input_state.held;
-						if (this_input_button == gp_axislh) {
-							INPUT_STATES[player_id, input_action.analogue_lx] = gamepad_axis_value(this_gamepad_id, this_input_button);
-						} 
-						else if (this_input_button == gp_axislv) {
-							INPUT_STATES[player_id, input_action.analogue_ly] = gamepad_axis_value(this_gamepad_id, this_input_button);
-						}
-						//else if (this_input_button == gp_axisrh) {
-						//	INPUT_STATES[player_id, input_action.analogue_rx] = gamepad_axis_value(this_gamepad_id, this_input_button);
-						//}
-						//else if (this_input_button == gp_axisrh {
-						//	INPUT_STATES[player_id, input_action.analogue_ry] = gamepad_axis_value(this_gamepad_id, this_input_button);
-						//}
+						//INPUT_STATES[player_id, this_input_action] = input_state.held;
+						INPUT_STATES[player_id, this_input_action] = gamepad_axis_value(this_gamepad_id, this_input_button);
 					} else {
-						INPUT_STATES[player_id, this_input_action] = input_state.none;
-						if (this_input_button == gp_axislh) {
-							INPUT_STATES[player_id, input_action.analogue_lx] = 0;
-						} 
-						else if (this_input_button == gp_axislv) {
-							INPUT_STATES[player_id, input_action.analogue_ly] = 0;
-						}
+						//INPUT_STATES[player_id, this_input_action] = input_state.none;
+						INPUT_STATES[player_id, this_input_action] = 0;
 					}
 				}
 				else if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
@@ -155,7 +139,6 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			/* In this case, we have a keyboard connected. Let's check the keyboard for this input action! */
 			
 			var this_keyboard_button = INPUT_KEYBOARD_KEYS[this_input_action];
-			
 			if (this_keyboard_button != noone) {
 			
 				if (this_keyboard_button == mb_left or this_keyboard_button == mb_right) {
@@ -181,6 +164,10 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 				}
 				else INPUT_STATES[player_id, this_input_action] = input_state.none;
 			
+				//if (toggles[this_input_action] == true) {
+				//	if (INPUT_STATES[player_id, this_input_action] == input_state.pressed) {
+				//	}
+				//}
 				/* We have updated the state of this input action for this player in our INPUT_STATES array. */
 			}
 		}
