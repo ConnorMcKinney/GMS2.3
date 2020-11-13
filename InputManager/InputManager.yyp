@@ -14,6 +14,7 @@
     {"id":{"name":"o_gameplay_manager","path":"objects/o_gameplay_manager/o_gameplay_manager.yy",},"order":3,},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},"order":0,},
     {"id":{"name":"rm_gameplay","path":"rooms/rm_gameplay/rm_gameplay.yy",},"order":1,},
+    {"id":{"name":"keyboard_mouse_checks","path":"scripts/keyboard_mouse_checks/keyboard_mouse_checks.yy",},"order":5,},
     {"id":{"name":"START_HERE","path":"notes/START_HERE/START_HERE.yy",},"order":0,},
   ],
   "Options": [

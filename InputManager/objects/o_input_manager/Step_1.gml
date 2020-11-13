@@ -140,34 +140,18 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			
 			var this_keyboard_button = INPUT_KEYBOARD_KEYS[this_input_action];
 			if (this_keyboard_button != noone) {
+				
+				if (toggles.this_input_action == true) {
+					if (INPUT_STATES[player_id, this_input_action] == input_state.pressed) {
+					}
+				}
 			
 				if (this_keyboard_button == mb_left or this_keyboard_button == mb_right) {
-					if (mouse_check_button_pressed(this_keyboard_button)) {
-						INPUT_STATES[player_id, this_input_action] = input_state.pressed;
-					}
-					else if(mouse_check_button(this_keyboard_button)) {
-						INPUT_STATES[player_id, this_input_action] = input_state.held;	
-					}
-					else if (mouse_check_button_released(this_keyboard_button)) {
-						INPUT_STATES[player_id, this_input_action] = input_state.released	
-					}
-					else INPUT_STATES[player_id, this_input_action] = input_state.none;
+					INPUT_STATES[player_id, this_input_action] = mouse_button_check(this_keyboard_button);
+				} else {
+					INPUT_STATES[player_id, this_input_action] = keyboard_button_check(this_keyboard_button);
 				}
-				if keyboard_check_pressed(this_keyboard_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.pressed;	
-				}
-				else if keyboard_check(this_keyboard_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.held;	
-				}
-				else if keyboard_check_released(this_keyboard_button) {
-					INPUT_STATES[player_id, this_input_action] = input_state.released;	
-				}
-				else INPUT_STATES[player_id, this_input_action] = input_state.none;
 			
-				//if (toggles[this_input_action] == true) {
-				//	if (INPUT_STATES[player_id, this_input_action] == input_state.pressed) {
-				//	}
-				//}
 				/* We have updated the state of this input action for this player in our INPUT_STATES array. */
 			}
 		}

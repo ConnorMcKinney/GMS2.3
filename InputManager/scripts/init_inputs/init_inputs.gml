@@ -10,7 +10,9 @@ function init_inputs() {
 	you can just middle-click the word 'enum' below. */
 
 	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_lx, analogue_ly, analogue_rx, analogue_ry};
-	enum toggles { false, false, false, false, false, false, true,  true, true,		 true, false, false, false, false}
+	enum toggles { up = false, down = false, left = false, right = false, shoot = false, dodge = false,  
+				   build = true, menu = true, inventory = true, controls = true, analoguelx = false,  
+				   analogue_ly = false, alalogue_rx = false, analogue_ry = false}
 
 	/* Next, we're going to initialize a few different input *states* in the same way.
 
