@@ -109,12 +109,15 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			/* In this case, we have a gamepad connected. Let's check the button for this input action! */
 			
 			var this_input_button = INPUT_GAMEPAD_KEYS[this_input_action];
-			
+//Need to add support for right stick			
 			if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
 				if (gamepad_axis_value(this_gamepad_id, this_input_action) != 0) {
-					INPUT_STATES[player_id, this_input_action] = input_state.pressed;
+					INPUT_STATES[player_id, this_input_action] = input_state.held;
+				} else {
+					INPUT_STATES[player_id, this_input_action] = input_state.none;
 				}
-			}else if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
+			}
+			else if gamepad_button_check_pressed(this_gamepad_id, this_input_button) {
 				INPUT_STATES[player_id, this_input_action] = input_state.pressed;	
 			}
 			else if gamepad_button_check(this_gamepad_id, this_input_button) {
@@ -132,6 +135,18 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			
 			var this_keyboard_button = INPUT_KEYBOARD_KEYS[this_input_action];
 			
+			if (this_keyboard_button == mb_left or this_keyboard_button == mb_right) {
+				if (mouse_check_button_pressed(this_keyboard_button)) {
+					INPUT_STATES[player_id, this_input_action] = input_state.pressed;
+				}
+				else if(mouse_check_button(this_keyboard_button)) {
+					INPUT_STATES[player_id, this_input_action] = input_state.held;	
+				}
+				else if (mouse_check_button_released(this_keyboard_button)) {
+					INPUT_STATES[player_id, this_input_action] = input_state.released	
+				}
+				else INPUT_STATES[player_id, this_input_action] = input_state.none;
+			}
 			if keyboard_check_pressed(this_keyboard_button) {
 				INPUT_STATES[player_id, this_input_action] = input_state.pressed;	
 			}

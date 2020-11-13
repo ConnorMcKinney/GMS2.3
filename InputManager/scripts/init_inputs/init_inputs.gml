@@ -57,7 +57,7 @@ function init_inputs() {
 	input_create(input_action.dodge,	noone, 	gp_face1, mb_right);
 	input_create(input_action.menu,		vk_escape, gp_start, noone);
 	input_create(input_action.inventory, ord("I"), 	gp_face3, noone);
-	input_create(input_action.controls,	vk_f1, noone, , noone);
+	input_create(input_action.controls,	vk_f1, noone, noone);
 	// select is used to disconnect a controller
 
 	/* We have initialized all of our input actions and given them keyboard and gamepad keys.
