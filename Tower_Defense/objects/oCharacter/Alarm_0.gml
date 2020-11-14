@@ -7,6 +7,7 @@
 //var fire_alarm = argument3;
 
 if(weapon[| weapon_stats.shooting]){
+	//if 
 	script_execute(create_bullet, oPlayerBullet, mouse_x, mouse_y, 0)
 	//var bullet = instance_create_layer(x, y, "Instances", oPlayerBullet)
 	//bullet.direction = point_direction(x, y, mouse_x, mouse_y)

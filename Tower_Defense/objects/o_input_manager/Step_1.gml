@@ -48,8 +48,16 @@ for ( var gamepad_id = 0; gamepad_id < max_gamepad_slot; gamepad_id++){
 					to seamlessly switch between keyboard and controller. */
 					
 					ds_list_replace(PLAYER_GAMEPAD_IDS, 0, gamepad_id);
+					//if (player_id_num == 0) {
+					//	keyboard = true;	
+					//}
+					with(oCharacter) {
+						if (variable_instance_get(id, "player_id_num") == 0) {
+							variable_instance_set(id, "this_gamepad_id", gamepad_id);
+						}
+					}
 				}
-				//else 
+				else 
 				if ds_list_size(PLAYER_GAMEPAD_IDS) < MAX_PLAYERS {
 					/* This is a whole new player, so we'll add this gamepad to the list. */
 					
@@ -67,13 +75,13 @@ We'll allow the "Select" or "Back" button to disconnect the gamepad, or if the g
 If it turns out that we've lost a gamepad, we will need to delete it from the list. So we want to
 start at the end of the list and iterate down to zero, so deleting stuff doesn't mess up our counts. */
 
-for ( var player_id = ds_list_size(PLAYER_GAMEPAD_IDS)-1; player_id >= 0; player_id--){
-	var this_player_gamepad_id = PLAYER_GAMEPAD_IDS[|player_id];
+for ( var player_id_num = ds_list_size(PLAYER_GAMEPAD_IDS)-1; player_id_num >= 0; player_id_num--){
+	var this_player_gamepad_id = PLAYER_GAMEPAD_IDS[|player_id_num];
 	if (this_player_gamepad_id >= 0) {
 		if !gamepad_is_connected(this_player_gamepad_id) || gamepad_button_check_pressed(this_player_gamepad_id, gp_select) {
 			
 			// Then we will remove this gamepad from our list by deleting the current player slot.
-			ds_list_delete(PLAYER_GAMEPAD_IDS, player_id);
+			ds_list_delete(PLAYER_GAMEPAD_IDS, player_id_num);
 		}
 	}
 }
@@ -89,7 +97,12 @@ if ds_list_empty(PLAYER_GAMEPAD_IDS) {
 /* And last, if player 1 presses a keyboard button, we want to switch them back to keyboard mode
 by simply ensuring that the first player's gamepad ID is -1. */
 if keyboard_check_pressed(vk_anykey) {
-	ds_list_replace(PLAYER_GAMEPAD_IDS, 0, -1);	
+	ds_list_replace(PLAYER_GAMEPAD_IDS, 0, -1);
+	with(oCharacter) {
+		if (variable_instance_get(id, "player_id_num") == 0) {
+			variable_instance_set(id, "this_gamepad_id", -1);
+		}
+	}
 }
 
 /* Our input manager is now connecting and disconnecting controllers and keyboards dynamically.
@@ -97,12 +110,12 @@ if keyboard_check_pressed(vk_anykey) {
 Next, we're going check our connected devices, read their inputs, and funnel all their inputs
 into the same system. Later, that system will be read by the player! */
 
-for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id++){
+for ( var player_id_num = 0; player_id_num < ds_list_size(PLAYER_GAMEPAD_IDS); player_id_num++){
 	
 	/* For this player, we're going to iterate through our various input actions
 	and check the state of that button. Then, we'll update our INPUT_STATES array with the result. */
 	
-	var this_gamepad_id = ds_list_find_value(PLAYER_GAMEPAD_IDS, player_id);
+	var this_gamepad_id = ds_list_find_value(PLAYER_GAMEPAD_IDS, player_id_num);
 	
 	for ( var this_input_action = 0; this_input_action < array_length_1d(INPUT_STATES[0]); this_input_action++){
 		if this_gamepad_id != -1 {
@@ -112,9 +125,9 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			if (this_input_button != noone) {
 				
 				if (this_input_button == gp_axislh or this_input_button == gp_axislv or this_input_button == gp_axisrh or this_input_button == gp_axisrv) {
-					INPUT_STATES[player_id, this_input_action] = controller_axis_check(this_gamepad_id, this_input_button);
+					INPUT_STATES[player_id_num, this_input_action] = controller_axis_check(this_gamepad_id, this_input_button);
 				} else {
-					INPUT_STATES[player_id, this_input_action] = controller_button_check(this_gamepad_id, this_input_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);	
+					INPUT_STATES[player_id_num, this_input_action] = controller_button_check(this_gamepad_id, this_input_button, TOGGLES[this_input_action], INPUT_STATES[player_id_num, this_input_action]);	
 				}
 
 				/* We have updated the state of this input action for this player in our INPUT_STATES array. */
@@ -126,16 +139,16 @@ for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id
 			var state2 = input_state.none;
 			var this_keyboard_button = INPUT_KEYBOARD_KEYS[this_input_action];
 			if (this_keyboard_button != noone) {			
-				state1 = keyboard_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);
+				state1 = keyboard_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id_num, this_input_action]);
 			} 
 			this_keyboard_button = INPUT_MOUSE_BUTTONS[this_input_action];
 			if (this_keyboard_button != noone) {	
-				state2 = mouse_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id, this_input_action]);	
+				state2 = mouse_button_check(this_keyboard_button, TOGGLES[this_input_action], INPUT_STATES[player_id_num, this_input_action]);	
 			}
 			if (state1 != input_state.none or state2 != input_state.none) {
-				INPUT_STATES[player_id, this_input_action] = (state1 != input_state.none ? state1:state2);
+				INPUT_STATES[player_id_num, this_input_action] = (state1 != input_state.none ? state1:state2);
 			} else {
-				INPUT_STATES[player_id, this_input_action] = input_state.none;
+				INPUT_STATES[player_id_num, this_input_action] = input_state.none;
 			}
 			/* We have updated the state of this input action for this player in our INPUT_STATES array. */
 		}

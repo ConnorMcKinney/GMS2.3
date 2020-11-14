@@ -13,18 +13,18 @@ if num_players_spawned < num_players_connected {
 	on how many input devices we have connected. So we need to spawn more players,
 	and make sure we give them the proper IDs! */
 	
-	for ( var player_id = 0; player_id < ds_list_size(PLAYER_GAMEPAD_IDS); player_id++){
+	for ( var player_id_num = 0; player_id_num < ds_list_size(PLAYER_GAMEPAD_IDS); player_id_num++){
 		/* This convenient spawn_player() script will let us spawn a player instance and
 		assign them a player ID. If the player is already spawned, the script will do nothing! */
-		spawn_player(player_id);
+		spawn_player(player_id_num);
 	}
 }
 else if num_players_spawned > num_players_connected {
 	/* In this case, someone has disconnected. So we have to clean up the extra
 	player instances that are no longer needed by despawning them. */
 	
-	for ( var player_id = num_players_spawned-1; player_id >= num_players_connected; player_id--){		
-		despawn_player(player_id);
+	for ( var player_id_num = num_players_spawned-1; player_id_num >= num_players_connected; player_id_num--){		
+		despawn_player(player_id_num);
 	}	
 }
 

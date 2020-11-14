@@ -1,14 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 if(can_move){
+	//show_debug_message(keyboard);
 	if (keyboard) {	
-	axisH = input_held(player_id, input_action.right)	-input_held(player_id, input_action.left);
-	axisV = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
+	axisH = input_held(player_id_num, input_action.right)	-input_held(player_id_num, input_action.left);
+	axisV = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
 
 	} else {
-		axisH = INPUT_STATES[player_id, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
-		axisV = INPUT_STATES[player_id, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
-		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_rx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ry]))
+		axisH = INPUT_STATES[player_id_num, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
+		axisV = INPUT_STATES[player_id_num, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
+		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_lx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ly]))
 	}
 }else{
 	axisH = 0
@@ -17,19 +18,29 @@ if(can_move){
 
 if (axisH = 0)
 {
-	    hspd *= stats[| player_stats.restitution]; //No horizontal thrust. Reduce speed.
+	hspd *= stats[| player_stats.restitution]; //No horizontal thrust. Reduce speed.
 }else{
-	    hspd += stats[| player_stats.impulse]*sign(axisH);
+	if keyboard {
+		hspd += stats[| player_stats.impulse]*sign(axisH);
+	} else { 
+		hspd += axisH;	
+	}
 }
 
 if (axisV = 0){
-	    vspd *= stats[| player_stats.restitution]; //No vertical thrust. Reduce speed.
+	vspd *= stats[| player_stats.restitution]; //No vertical thrust. Reduce speed.
 }else{
-	    vspd += stats[| player_stats.impulse]*sign(axisV);
+	if keyboard {
+		vspd += stats[| player_stats.impulse]*sign(axisV);
+	} else {
+		vspd += axisV;	
+	}
 }
 
-var _move_direction = point_direction(0, 0, hspd+stats[| player_stats.impulse]*sign(axisH), vspd+stats[| player_stats.impulse]*sign(axisV))
-spd = sqrt(sqr(hspd)+sqr(vspd))
+//var _move_direction = point_direction(0, 0, hspd+stats[| player_stats.impulse]*sign(axisH), vspd+stats[| player_stats.impulse]*sign(axisV));
+var _move_direction = point_direction(0, 0, hspd, vspd);
+spd = sqrt(sqr(hspd)+sqr(vspd));
+//show_debug_message(_move_direction)
 if(spd > stats[| player_stats.max_speed]){
 	hspd = stats[| player_stats.max_speed] * dcos(_move_direction)
 	vspd = stats[| player_stats.max_speed] * dsin(_move_direction) * -1
@@ -130,7 +141,7 @@ if(!dodging && !on_wall){
 depth = -bbox_bottom
 
 //show_debug_message("Player depth: " + string(depth));
-if(INPUT_STATES[player_id, input_action.shoot] != input_state.none && script_execute(can_shoot)){
+if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && script_execute(can_shoot)){
 	if(!weapon[| weapon_stats.shooting]){
 		weapon[| weapon_stats.shooting] = true;
 		alarm[0] = 1;
@@ -145,4 +156,14 @@ if(INPUT_STATES[player_id, input_action.shoot] != input_state.none && script_exe
 
 if(!place_meeting(x,y,oObstacles)){
 	on_wall = false;	
+}
+
+if (INPUT_STATES[player_id_num, input_action.build] == input_state.pressed) {
+	if (layer_get_visible("Shop")){
+		layer_set_visible("Shop", false);
+		instance_deactivate_layer("Shop");
+	}else{
+		layer_set_visible("Shop", true);
+		instance_activate_layer("Shop");
+	}	
 }

@@ -21,7 +21,6 @@
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":82,"eventType":5,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":69,"eventType":9,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":1,"eventType":2,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":8,"eventType":9,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":89,"eventType":9,"collisionObjectId":null,"parent":{"name":"oSpawn","path":"objects/oSpawn/oSpawn.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},

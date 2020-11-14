@@ -11,7 +11,7 @@ function init_inputs() {
 
 	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_lx, analogue_ly, analogue_rx, analogue_ry, length};
 	globalvar NAMES; NAMES = ["Up", "Down", "Left", "Right", "Shoot", "Dodge", "Build", "Menu", "Inventory", "Controls", "Analogue_lx", "Analogue_ly", "Analogue_rx", "Analogue_ry"]
-	globalvar TOGGLES;				TOGGLES = [false, false, false, false, false, false, true, true, true, true, false, false, false, false];
+	globalvar TOGGLES;				TOGGLES = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 	
 	if ((input_action.length != array_length(NAMES)) or (input_action.length != array_length(TOGGLES))) {
 		//show_error(string(input_action.length) + ", " + string(array_length(NAMES)) + ", " + string(array_length(TOGGLES)))	

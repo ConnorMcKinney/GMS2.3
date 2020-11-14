@@ -24,8 +24,9 @@ enum hud{
 	heart_pos_buffer = (16+32)/2
 }
 
+this_gamepad_id = -1;
 global.player = object_index;
-player_id = 0;				// Set by the gameplay manager
+player_id_num = 0;				// Set by the gameplay manager
 keyboard = true;
 alarm[4] = 3;
 
@@ -35,8 +36,8 @@ stats[| player_stats.total] = 0;
 //should populate in reverse index order
 stats[| player_stats.max_hp] = 6
 stats[| player_stats.hp] = stats[| player_stats.max_hp];
-stats[| player_stats.max_speed] = 4;//8
-stats[| player_stats.impulse] = .01*room_speed;//.03*room_speed
+stats[| player_stats.max_speed] = 8;//8
+stats[| player_stats.impulse] = .03*room_speed;//.03*room_speed
 stats[| player_stats.restitution] = 0.85;
 
 stats[| player_stats.dodge_distance] = global.gridsize * 2;
