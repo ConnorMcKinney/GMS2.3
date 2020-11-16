@@ -1,8 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 if(can_move){
-	//show_debug_message(keyboard);
-	if (keyboard) {	
+	//show_debug_message(this_gamepad_id);
+	if (this_gamepad_id == -1) {	
 	axisH = input_held(player_id_num, input_action.right)	-input_held(player_id_num, input_action.left);
 	axisV = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
 
@@ -20,7 +20,7 @@ if (axisH = 0)
 {
 	hspd *= stats[| player_stats.restitution]; //No horizontal thrust. Reduce speed.
 }else{
-	if keyboard {
+	if (this_gamepad_id == -1) {
 		hspd += stats[| player_stats.impulse]*sign(axisH);
 	} else { 
 		hspd += axisH;	
@@ -30,7 +30,7 @@ if (axisH = 0)
 if (axisV = 0){
 	vspd *= stats[| player_stats.restitution]; //No vertical thrust. Reduce speed.
 }else{
-	if keyboard {
+	if (this_gamepad_id == -1) {
 		vspd += stats[| player_stats.impulse]*sign(axisV);
 	} else {
 		vspd += axisV;	
@@ -138,21 +138,18 @@ if(!dodging && !on_wall){
 	}
 }
 
-depth = -bbox_bottom
-
-//show_debug_message("Player depth: " + string(depth));
-if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && script_execute(can_shoot)){
-	if(!weapon[| weapon_stats.shooting]){
-		weapon[| weapon_stats.shooting] = true;
-		alarm[0] = 1;
+//if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && script_execute(can_shoot)){
+//	if(!weapon[| weapon_stats.shooting]){
+//		weapon[| weapon_stats.shooting] = true;
+//		alarm[0] = 1;
 		
-	}
-}else{
-	weapon[| weapon_stats.shooting] = false;
-	weapon[| weapon_stats.burst_count] = 1;
-	burst_count = 1;
-	//update_weapon_stats();
-}
+//	}
+//}else{
+//	weapon[| weapon_stats.shooting] = false;
+//	weapon[| weapon_stats.burst_count] = 1;
+//	burst_count = 1;
+//	//update_weapon_stats();
+//}
 
 if(!place_meeting(x,y,oObstacles)){
 	on_wall = false;	

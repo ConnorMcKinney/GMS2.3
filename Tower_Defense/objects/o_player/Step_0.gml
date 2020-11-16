@@ -3,8 +3,8 @@ you have going on in your game. We're going to use our input_held() script to se
 player intends to do -- move up, down, left, or right. Then, we'll apply that movement! */
 
 if (keyboard) {	
-	var intended_x_movement = input_held(player_id, input_action.right)	-input_held(player_id, input_action.left);
-	var intended_y_movement = input_held(player_id, input_action.down)	-input_held(player_id, input_action.up);
+	var intended_x_movement = input_held(player_id_num, input_action.right)	-input_held(player_id_num, input_action.left);
+	var intended_y_movement = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
 
 } else {
 	var intended_x_movement = INPUT_STATES[player_id, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
