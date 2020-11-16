@@ -20,19 +20,19 @@ function char_check_collision() {
 	//}
 
 	////vertical collisions
-	//y += vspd;
+	//y += player_stats.vspd;
 
 	////Snap
 	//if(!dodging && !on_wall){
-	//	if place_meeting(x,y+sign(vspd),oObstacles) {
-	//		var wall = instance_place(x,y+sign(vspd),oObstacles);
+	//	if place_meeting(x,y+sign(player_stats.vspd),oObstacles) {
+	//		var wall = instance_place(x,y+sign(player_stats.vspd),oObstacles);
 	//		if(script_execute(can_collide_with_tower, wall)){
-	//			if vspd > 0 { //top
+	//			if player_stats.vspd > 0 { //top
 	//			    y = (wall.bbox_top-1)-sprite_bbox_bottom;
 	//			} else { //bottom
 	//			    y = (wall.bbox_bottom+1)-sprite_bbox_top;
 	//			}
-	//			vspd = 0;
+	//			player_stats.vspd = 0;
 	//			_changed_y = true;
 	//		}
 	//	}
