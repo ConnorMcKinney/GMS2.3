@@ -1,4 +1,4 @@
-function weapon() constructor {
+function weapon_init() constructor {
 	name = "";
 	
 	damage = 0;
@@ -24,7 +24,7 @@ function weapon() constructor {
 	upgrade_max = 1;
 }
 
-function shotgun() : weapon() constructor {
+function shotgun_init() : weapon_init() constructor {
 	name = "Shotgun";
 	
 	damage = 0;

@@ -72,7 +72,9 @@ alarm[3] = 3;
 //can_take_damage = true;//stats[| player_stats.can_take_damage];
 
 //update_player_stats();
-weapon = new shotgun();
+
+weapon = new shotgun_init();
+
 //shotgun_setup();
 //var exists = ds_exists(weapon, ds_type_list);
 ////script_execute(shotgun_setup);

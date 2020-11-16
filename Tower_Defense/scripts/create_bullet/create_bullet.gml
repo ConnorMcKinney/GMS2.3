@@ -1,9 +1,9 @@
-///@func create_bullet(bullet_object, target_x, target_y, fire_alarm number)
+///@func create_bullet(_weapon, target_x, target_y, fire_alarm number)
 ///@argument0 bullet_object
 ///@argument1 target_x
 ///@argument2 target_y
 ///@argument3 fire_alarm number
-function create_bullet(_weapon, target_x, target_y, fire_alarm) {
+function create_bullet(_weapon, target_x, target_y, fire_alarm) {		
 	var calc_direction = point_direction(x, y, target_x, target_y);
 	var degree_mod = _weapon.projectile_spread_value/(_weapon.projectiles-1);
 	var right_projectiles = (_weapon.projectiles-1)/2;

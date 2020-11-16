@@ -7,8 +7,11 @@
 //var fire_alarm = argument3;
 
 if(weapon.shooting){
-	//if 
-	create_bullet(weapon, mouse_x, mouse_y, 0);
+	if (this_gamepad_id == -1) {
+		create_bullet(weapon, mouse_x, mouse_y, 0);
+	} else {
+		create_bullet(weapon, x + INPUT_STATES[player_id_num, input_action.analogue_rx], y + INPUT_STATES[player_id_num, input_action.analogue_ry], 0);	
+	}
 	//var bullet = instance_create_layer(x, y, "Instances", oPlayerBullet)
 	//bullet.direction = point_direction(x, y, mouse_x, mouse_y)
 	//bullet.speed = 20

@@ -1,4 +1,4 @@
-#macro MULTIPLAYER 1
+#macro MULTIPLAYER 0
 function init_inputs() {
 	/* This is where we set up the DATA STRUCTURES for handling all of our inputs.
 
