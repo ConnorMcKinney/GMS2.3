@@ -1,3 +1,4 @@
+#macro MULTIPLAYER 1
 function init_inputs() {
 	/* This is where we set up the DATA STRUCTURES for handling all of our inputs.
 
@@ -12,6 +13,7 @@ function init_inputs() {
 	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_lx, analogue_ly, analogue_rx, analogue_ry, length};
 	globalvar NAMES; NAMES = ["Up", "Down", "Left", "Right", "Shoot", "Dodge", "Build", "Menu", "Inventory", "Controls", "Analogue_lx", "Analogue_ly", "Analogue_rx", "Analogue_ry"]
 	globalvar TOGGLES; TOGGLES = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
 	
 	if ((input_action.length != array_length(NAMES)) or (input_action.length != array_length(TOGGLES))) {
 		//show_error(string(input_action.length) + ", " + string(array_length(NAMES)) + ", " + string(array_length(TOGGLES)))	

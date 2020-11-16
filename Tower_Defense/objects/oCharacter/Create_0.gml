@@ -26,8 +26,7 @@ enum hud{
 
 this_gamepad_id = -1;
 player_id_num = 0;				// Set by the gameplay manager
-alarm[4] = 3;
-
+alarm[3] = 3;
 
 stats = ds_list_create();
 stats[| player_stats.total] = 0;
@@ -45,7 +44,6 @@ stats[| player_stats.dodge_cooldown] = 1 * room_speed;
 
 //stats[| player_stats.can_move] = true;
 //stats[| player_stats.on_wall] = false;
-
 //stats[| player_stats.hspd] = 0;
 //stats[| player_stats.vspd] = 0;
 

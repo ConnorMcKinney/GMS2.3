@@ -15,12 +15,11 @@ function spawn_player(argument0) {
 		var player_spawn_x = room_width*.5+random_range(-200,200);
 		var player_spawn_y = room_height*.5+random_range(-200,200);
 	
-		with instance_create_depth(player_spawn_x, player_spawn_y, 0, o_player) {
+		with instance_create_depth(player_spawn_x, player_spawn_y, 0, oCharacter) {
 			player_id_num = player_id_to_spawn;
+			show_debug_message("Spawned new player.");
 			return id;
 		}
 	}
 	else return noone;
-
-
 }
