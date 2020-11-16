@@ -1,3 +1,4 @@
+#macro MULTIPLAYER 1
 function init_inputs() {
 	/* This is where we set up the DATA STRUCTURES for handling all of our inputs.
 
@@ -11,7 +12,8 @@ function init_inputs() {
 
 	enum input_action { up, down, left,	right, shoot, dodge, build, menu, inventory, controls , analogue_lx, analogue_ly, analogue_rx, analogue_ry, length};
 	globalvar NAMES; NAMES = ["Up", "Down", "Left", "Right", "Shoot", "Dodge", "Build", "Menu", "Inventory", "Controls", "Analogue_lx", "Analogue_ly", "Analogue_rx", "Analogue_ry"]
-	globalvar TOGGLES;				TOGGLES = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+	globalvar TOGGLES; TOGGLES = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
 	
 	if ((input_action.length != array_length(NAMES)) or (input_action.length != array_length(TOGGLES))) {
 		//show_error(string(input_action.length) + ", " + string(array_length(NAMES)) + ", " + string(array_length(TOGGLES)))	
@@ -71,7 +73,7 @@ function init_inputs() {
 	input_create(input_action.right,	ord("D"), noone, noone);
 	input_create(input_action.shoot,	vk_space, gp_shoulderrb, mb_left);
 	input_create(input_action.dodge,	noone, 	gp_face1, mb_right);
-	input_create(input_action.build,	ord("B"), 	gp_padu, noone);
+	input_create(input_action.build,	ord("E"), 	gp_padu, noone);
 	input_create(input_action.menu,		vk_escape, gp_start, noone);
 	input_create(input_action.inventory, ord("I"), 	gp_face3, noone);
 	input_create(input_action.controls,	vk_f1, noone, noone);

@@ -72,6 +72,7 @@
     {"id":{"name":"oTower_collision","path":"objects/oTower_collision/oTower_collision.yy",},"order":2,},
     {"id":{"name":"input_held","path":"scripts/input_held/input_held.yy",},"order":3,},
     {"id":{"name":"oRegion","path":"objects/oRegion/oRegion.yy",},"order":2,},
+    {"id":{"name":"print","path":"scripts/print/print.yy",},"order":5,},
     {"id":{"name":"controller_checks","path":"scripts/controller_checks/controller_checks.yy",},"order":0,},
     {"id":{"name":"oCharacter","path":"objects/oCharacter/oCharacter.yy",},"order":0,},
     {"id":{"name":"oEnemies","path":"objects/oEnemies/oEnemies.yy",},"order":1,},

@@ -5,7 +5,7 @@ That's because it's the only object we need!
 Here in the step event, our Gameplay Manager will check how many players we have
 and make sure that we've spawned the correct number of players. */
 
-var num_players_spawned		= instance_number(o_player);
+var num_players_spawned		= instance_number(oCharacter);
 var num_players_connected	= ds_list_size(PLAYER_GAMEPAD_IDS);
 
 if num_players_spawned < num_players_connected {
@@ -17,6 +17,8 @@ if num_players_spawned < num_players_connected {
 		/* This convenient spawn_player() script will let us spawn a player instance and
 		assign them a player ID. If the player is already spawned, the script will do nothing! */
 		spawn_player(player_id_num);
+		
+	
 	}
 }
 else if num_players_spawned > num_players_connected {
@@ -25,6 +27,7 @@ else if num_players_spawned > num_players_connected {
 	
 	for ( var player_id_num = num_players_spawned-1; player_id_num >= num_players_connected; player_id_num--){		
 		despawn_player(player_id_num);
+		
 	}	
 }
 

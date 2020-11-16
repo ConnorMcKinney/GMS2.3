@@ -42,15 +42,12 @@ for ( var gamepad_id = 0; gamepad_id < max_gamepad_slot; gamepad_id++){
 				
 				var first_player_is_using_keyboard = (ds_list_find_value(PLAYER_GAMEPAD_IDS, 0) == -1);
 				
-				if first_player_is_using_keyboard {
+				if (first_player_is_using_keyboard and not MULTIPLAYER) {
 					/* We will also check whether the first player is using a keyboard.
 					If they are, we will swap them to the gamepad, allowing player 1
 					to seamlessly switch between keyboard and controller. */
 					
 					ds_list_replace(PLAYER_GAMEPAD_IDS, 0, gamepad_id);
-					//if (player_id_num == 0) {
-					//	keyboard = true;	
-					//}
 					with(oCharacter) {
 						if (variable_instance_get(id, "player_id_num") == 0) {
 							variable_instance_set(id, "this_gamepad_id", gamepad_id);
@@ -82,6 +79,7 @@ for ( var player_id_num = ds_list_size(PLAYER_GAMEPAD_IDS)-1; player_id_num >= 0
 			
 			// Then we will remove this gamepad from our list by deleting the current player slot.
 			ds_list_delete(PLAYER_GAMEPAD_IDS, player_id_num);
+			show_debug_message("Removed gamepad");
 		}
 	}
 }
@@ -97,10 +95,12 @@ if ds_list_empty(PLAYER_GAMEPAD_IDS) {
 /* And last, if player 1 presses a keyboard button, we want to switch them back to keyboard mode
 by simply ensuring that the first player's gamepad ID is -1. */
 if keyboard_check_pressed(vk_anykey) {
-	ds_list_replace(PLAYER_GAMEPAD_IDS, 0, -1);
-	with(oCharacter) {
-		if (variable_instance_get(id, "player_id_num") == 0) {
-			variable_instance_set(id, "this_gamepad_id", -1);
+	if (not MULTIPLAYER) {
+		ds_list_replace(PLAYER_GAMEPAD_IDS, 0, -1);
+		with(oCharacter) {
+			if (variable_instance_get(id, "player_id_num") == 0) {
+				variable_instance_set(id, "this_gamepad_id", -1);
+			}
 		}
 	}
 }
