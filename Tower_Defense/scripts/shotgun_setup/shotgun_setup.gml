@@ -28,7 +28,7 @@ function shotgun_init() : weapon_init() constructor {
 	name = "Shotgun";
 	
 	damage = 0;
-	fire_rate = room_speed/1.5;
+	fire_rate = room_speed/4; // room_speed/1.5
 	automatic = true;
 	shooting = false;
 	
@@ -42,7 +42,7 @@ function shotgun_init() : weapon_init() constructor {
 	projectile_spread_value = 15; //bounding cone. Included angle
 	projectile_object = oPlayerBullet;
 	
-	burst_fire = true;
+	burst_fire = false; //true
 	burst_delay = fire_rate/6;
 	burst_amount = 3;
 	burst_count = 1;

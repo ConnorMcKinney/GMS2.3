@@ -10,6 +10,4 @@ function update_player_stats() {
 	dodge_time = stats[| player_stats.dodge_time];//dodge_distance/dodge_speed
 	dodge_cooldown = stats[| player_stats.dodge_cooldown];
 	}
-
-
 }

@@ -21,9 +21,14 @@ player_stats = {
 	dodge_cooldown : 1 * room_speed,
 	dodging : false,
 	
-	can_take_damage : true	
+	can_take_damage : true,	
+	can_shoot : true,
+	
+	last_aim : [0, 0]
     };
 
+cursor_sprite = sShooting_cursor;
+//window_set_cursor(cr_none)
 
 enum hud{
 	heart_pos_x = 16,
@@ -34,6 +39,8 @@ enum hud{
 this_gamepad_id = -1;
 player_id_num = 0;				// Set by the gameplay manager
 alarm[3] = 3;
+
+weapon = new shotgun_init();
 
 //stats = ds_list_create();
 //stats[| player_stats.total] = 0;
@@ -73,19 +80,9 @@ alarm[3] = 3;
 
 //update_player_stats();
 
-weapon = new shotgun_init();
+
 
 //shotgun_setup();
-//var exists = ds_exists(weapon, ds_type_list);
-////script_execute(shotgun_setup);
-
-//update_weapon_stats();
-//var exists = ds_exists(weapon, ds_type_list);
-////currently isn't utilized with the create_bullet script
-////shot_speed_inheritance = 0
-//if(exists){
-//	show_debug_message("woot");	
-//}
 
 
 /*if(can_dodge){

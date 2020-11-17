@@ -3,9 +3,16 @@
 function controller_axis_check(controller_id, axis) {
 	var state = 0;
 	var axis_val = gamepad_axis_value(controller_id, axis);
-	if (abs(axis_val)-DEADZONE > 0) {
-			//results[0] = true
-			state = gamepad_axis_value(controller_id, axis);
+	if (axis == gp_axislh or axis == gp_axislv) {
+		if (abs(axis_val)-DEADZONE > 0) {
+				//results[0] = true
+				state = gamepad_axis_value(controller_id, axis);
+		}
+	} else { 
+		if (abs(axis_val)-DEADZONE > .2) {
+				//results[0] = true
+				state = gamepad_axis_value(controller_id, axis);
+		}	
 	}
 	
 	return state;	

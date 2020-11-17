@@ -7,9 +7,16 @@ if(player_stats.can_move){
 	axisV = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
 
 	} else {
+		//the cutoff for deadzone needs to be here. Deadzone should be total distance, not distance on one axis.
+		// sqrt(x^2+y^2) >= deadzonef
 		axisH = INPUT_STATES[player_id_num, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
 		axisV = INPUT_STATES[player_id_num, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
 		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_lx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ly]))
+		if ((INPUT_STATES[player_id_num, input_action.analogue_rx] + INPUT_STATES[player_id_num, input_action.analogue_ry]) != 0) {
+			player_stats.last_aim = [INPUT_STATES[player_id_num, input_action.analogue_rx], INPUT_STATES[player_id_num, input_action.analogue_ry]];
+		} else if ((axisH + axisV) != 0) {
+			player_stats.last_aim = [axisH, axisV];
+		}
 	}
 }else{
 	axisH = 0
@@ -138,7 +145,7 @@ if(!player_stats.dodging && !player_stats.on_wall){
 	}
 }
 
-if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && script_execute(can_shoot)){
+if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && player_stats.can_shoot){
 	if(!weapon.shooting){
 		weapon.shooting = true;
 		alarm[0] = 1;
