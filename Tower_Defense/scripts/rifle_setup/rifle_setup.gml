@@ -1,6 +1,6 @@
 function rifle_setup() {
 	damage = 10;
-	fire_rate = room_speed/3;
+	fire_rate = SPEED/3;
 	automatic = true;
 
 	can_pierce = false;

@@ -1,4 +1,4 @@
-#macro MULTIPLAYER 0
+
 function init_inputs() {
 	/* This is where we set up the DATA STRUCTURES for handling all of our inputs.
 
@@ -48,8 +48,10 @@ function init_inputs() {
 
 	ds_list_add(PLAYER_GAMEPAD_IDS, -1);
 	
-	globalvar DEADZONE;
+	globalvar DEADZONE; globalvar DEADZONE_RS; //deadzone for left stick and right stick
 	DEADZONE = 0.15;
+	DEADZONE_RS = DEADZONE + .2
+	
 
 	/* Each position in the PLAYER_GAMEPAD_IDS list corresponds to a unique player.
 

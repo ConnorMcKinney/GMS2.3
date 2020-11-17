@@ -1,6 +1,6 @@
 /* This is a simple player object. It just moves around in response to inputs! */
 
-move_speed		= (500/room_speed); // This is the player's baseline move speed.
+move_speed		= (500/SPEED); // This is the player's baseline move speed.
 move_direction	= 0;				// This is the direction the player will move. This value will change as we hit different inputs.
 radius			= 50;				// This is used to draw the player as a circle.
 

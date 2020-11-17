@@ -12,6 +12,9 @@ for(i=0; i<player_stats.max_hp; i+=2){
 	}
 }
 
+if (this_gamepad_id != -1) {
+	draw_sprite(sShooting_cursor, 0, x + lengthdir_x(player_stats.cursor_dist, player_stats.last_aim_angle), bbox_top + lengthdir_y(player_stats.cursor_dist, player_stats.last_aim_angle));
+}
 
 
 //draw_set_color(c_black);

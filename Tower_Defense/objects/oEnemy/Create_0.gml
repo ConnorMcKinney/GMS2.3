@@ -10,6 +10,6 @@ symmetric_spread_setup();
 projectiles = 3;
 projectile_spread_value = 30;
 projectile_speed = 4;
-fire_rate = room_speed;
+fire_rate = SPEED;
 alarm[0] = 1;
-alarm[1] = .1*room_speed;
+alarm[1] = .1*SPEED;

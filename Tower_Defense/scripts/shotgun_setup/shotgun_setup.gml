@@ -2,7 +2,7 @@ function weapon_init() constructor {
 	name = "";
 	
 	damage = 0;
-	fire_rate = room_speed/1.5;
+	fire_rate = SPEED/1.5;
 	automatic = true;
 	shooting = false;
 	
@@ -28,7 +28,7 @@ function shotgun_init() : weapon_init() constructor {
 	name = "Shotgun";
 	
 	damage = 0;
-	fire_rate = room_speed/4; // room_speed/1.5
+	fire_rate = SPEED/4; // SPEED/1.5
 	automatic = true;
 	shooting = false;
 	
@@ -54,7 +54,7 @@ function shotgun_init() : weapon_init() constructor {
 	//weapon = ds_list_create();
 	//weapon[| weapon_stats.total] = 0;
 	//weapon[| weapon_stats.damage] = 8;
-	//weapon[| weapon_stats.fire_rate] = room_speed/1.5;
+	//weapon[| weapon_stats.fire_rate] = SPEED/1.5;
 	//weapon[| weapon_stats.automatic] = true;
 	//weapon[| weapon_stats.shooting] = false;
 

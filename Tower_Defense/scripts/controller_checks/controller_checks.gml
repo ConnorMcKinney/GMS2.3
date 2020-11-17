@@ -1,21 +1,31 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function controller_axis_check(controller_id, axis) {
-	var state = 0;
-	var axis_val = gamepad_axis_value(controller_id, axis);
-	if (axis == gp_axislh or axis == gp_axislv) {
-		if (abs(axis_val)-DEADZONE > 0) {
-				//results[0] = true
-				state = gamepad_axis_value(controller_id, axis);
-		}
-	} else { 
-		if (abs(axis_val)-DEADZONE > .2) {
-				//results[0] = true
-				state = gamepad_axis_value(controller_id, axis);
-		}	
-	}
+	//var state = 0;
+	//var axis_val = gamepad_axis_value(controller_id, axis);
+	//if (axis == gp_axislh or axis == gp_axislv) {
+	//	if (abs(axis_val)-DEADZONE > 0) {
+	//			//results[0] = true
+	//			state = gamepad_axis_value(controller_id, axis);
+	//	}
+	//} else { 
+	//	if (abs(axis_val)-DEADZONE > .2) {
+	//			//results[0] = true
+	//			state = gamepad_axis_value(controller_id, axis);
+	//	}	
+	//}
 	
-	return state;	
+	//return state;	
+	
+	return gamepad_axis_value(controller_id, axis);
+}
+
+function controller_deadzone_check(axis1, axis2, deadzone) {
+	if (sqrt(sqr(axis1) + sqr(axis2)) >= deadzone) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function controller_button_check(controller_id, button, toggle, current_state) {

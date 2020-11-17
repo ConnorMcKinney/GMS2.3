@@ -13,7 +13,7 @@ range = 100;
 
 
 damage = 10;
-fire_rate = room_speed/1.5;
+fire_rate = SPEED/1.5;
 automatic = true;
 
 can_pierce = true;

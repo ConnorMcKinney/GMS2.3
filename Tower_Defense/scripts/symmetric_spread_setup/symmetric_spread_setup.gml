@@ -1,6 +1,6 @@
 function symmetric_spread_setup() {
 	damage = 5;
-	fire_rate = room_speed/2;
+	fire_rate = SPEED/2;
 	automatic = true;
 
 	can_pierce = false;

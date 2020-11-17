@@ -7,16 +7,32 @@ if(player_stats.can_move){
 	axisV = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
 
 	} else {
-		//the cutoff for deadzone needs to be here. Deadzone should be total distance, not distance on one axis.
-		// sqrt(x^2+y^2) >= deadzonef
-		axisH = INPUT_STATES[player_id_num, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
-		axisV = INPUT_STATES[player_id_num, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
+		//MOVEMENT
+		if controller_deadzone_check(INPUT_STATES[player_id_num, input_action.analogue_lx], INPUT_STATES[player_id_num, input_action.analogue_ly], DEADZONE) {
+			axisH = INPUT_STATES[player_id_num, input_action.analogue_lx]//input_held(player_id, input_action.right)*INPUT_STATES[player_id, input_action.analogue_lx]
+			axisV = INPUT_STATES[player_id_num, input_action.analogue_ly]//input_held(player_id, input_action.up)*INPUT_STATES[player_id, input_action.analogue_ly]
+		} else {
+			axisH = 0;
+			axisV = 0;
+		}
+		show_debug_message(string(axisH) + ", " + string(axisV));
 		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_lx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ly]))
-		if ((INPUT_STATES[player_id_num, input_action.analogue_rx] + INPUT_STATES[player_id_num, input_action.analogue_ry]) != 0) {
+		
+		//AIM
+		if controller_deadzone_check(INPUT_STATES[player_id_num, input_action.analogue_rx], INPUT_STATES[player_id_num, input_action.analogue_ry], DEADZONE_RS) {
 			player_stats.last_aim = [INPUT_STATES[player_id_num, input_action.analogue_rx], INPUT_STATES[player_id_num, input_action.analogue_ry]];
 		} else if ((axisH + axisV) != 0) {
 			player_stats.last_aim = [axisH, axisV];
 		}
+		player_stats.last_aim_angle = darctan2(-player_stats.last_aim[1], player_stats.last_aim[0]);
+		
+		
+		//if ((INPUT_STATES[player_id_num, input_action.analogue_rx] + INPUT_STATES[player_id_num, input_action.analogue_ry]) != 0) {
+		//	player_stats.last_aim = [INPUT_STATES[player_id_num, input_action.analogue_rx], INPUT_STATES[player_id_num, input_action.analogue_ry]];
+		//} else if ((axisH + axisV) != 0) {
+		//	player_stats.last_aim = [axisH, axisV];
+		//}
+		//player_stats.last_aim_angle = darctan2(-player_stats.last_aim[1], player_stats.last_aim[0]);
 	}
 }else{
 	axisH = 0
@@ -46,11 +62,12 @@ if (axisV = 0){
 
 //var _move_direction = point_direction(0, 0, hspd+stats[| player_stats.impulse]*sign(axisH), player_stats.vspd+stats[| player_stats.impulse]*sign(axisV));
 var _move_direction = point_direction(0, 0, player_stats.hspd, player_stats.vspd);
-spd = sqrt(sqr(player_stats.hspd)+sqr(player_stats.vspd));
+show_debug_message(clamp( sqrt( sqr(player_stats.hspd) + sqr(player_stats.vspd) )*clamp( sqrt( sqr(axisH) + sqr(axisV) ), 0, 1), 0, player_stats.max_speed));
+spd = sqrt( sqr(player_stats.hspd) + sqr(player_stats.vspd) );
 //show_debug_message(_move_direction)
 if(spd > player_stats.max_speed){
-	player_stats.hspd = player_stats.max_speed * dcos(_move_direction)
-	player_stats.vspd = player_stats.max_speed * dsin(_move_direction) * -1
+	player_stats.hspd = player_stats.max_speed * dcos(_move_direction) * clamp( sqrt( sqr(axisH) + sqr(axisV) ), 0, 1);
+	player_stats.vspd = player_stats.max_speed * dsin(_move_direction) * -1 * clamp( sqrt( sqr(axisH) + sqr(axisV) ), 0, 1);
 }
 if(abs(axisH)+abs(axisV) > 0){
 	if(abs(player_stats.hspd) > abs(player_stats.vspd)){

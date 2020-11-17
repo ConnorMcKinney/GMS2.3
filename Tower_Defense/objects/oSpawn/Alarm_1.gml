@@ -12,4 +12,4 @@ if(instance_number(oEnemy) <= 0){
 }
 
 
-alarm[1] = room_speed * 5
+alarm[1] = SPEED * 5

@@ -7,8 +7,8 @@ player_stats = {
     max_hp : 6,
     hp : 6,
 	
-    max_speed : 8,
-    impulse : 0.3*room_speed,
+    max_speed : 4,
+    impulse : 0.3*SPEED,
     restitution : 0.85,
 	can_move : true,
 	on_wall : false,
@@ -17,14 +17,16 @@ player_stats = {
 	
 	dodge_distance : map.gridsize,
 	//dodge_speed : max_speed*1.2,
-	dodge_time : .3*room_speed,
-	dodge_cooldown : 1 * room_speed,
+	dodge_time : .3*SPEED,
+	dodge_cooldown : 1 * SPEED,
 	dodging : false,
 	
 	can_take_damage : true,	
 	can_shoot : true,
 	
-	last_aim : [0, 0]
+	last_aim : [0, 0],
+	last_aim_angle : 0,
+	cursor_dist : 40
     };
 
 cursor_sprite = sShooting_cursor;
@@ -48,13 +50,13 @@ weapon = new shotgun_init();
 //stats[| player_stats.max_hp] = 6
 //stats[| player_stats.hp] = stats[| player_stats.max_hp];
 //stats[| player_stats.max_speed] = 8;//8
-//stats[| player_stats.impulse] = .03*room_speed;//.03*room_speed
+//stats[| player_stats.impulse] = .03*SPEED;//.03*SPEED
 //stats[| player_stats.restitution] = 0.85;
 
 //stats[| player_stats.dodge_distance] = global.gridsize * 2;
 //stats[| player_stats.dodge_speed] = stats[| player_stats.max_speed]*1.2;
-//stats[| player_stats.dodge_time] = .3*room_speed;//dodge_distance/dodge_speed
-//stats[| player_stats.dodge_cooldown] = 1 * room_speed;
+//stats[| player_stats.dodge_time] = .3*SPEED;//dodge_distance/dodge_speed
+//stats[| player_stats.dodge_cooldown] = 1 * SPEED;
 
 
 
