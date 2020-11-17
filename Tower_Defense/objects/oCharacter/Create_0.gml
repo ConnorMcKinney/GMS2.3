@@ -20,6 +20,8 @@ player_stats = {
 	dodge_time : .3*SPEED,
 	dodge_cooldown : 1 * SPEED,
 	dodging : false,
+	dodge_speed : 5,
+	can_dodge : true,
 	
 	can_take_damage : true,	
 	can_shoot : true,

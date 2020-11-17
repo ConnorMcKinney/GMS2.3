@@ -164,6 +164,21 @@ if(!player_stats.dodging && !player_stats.on_wall){
 	}
 }
 
+if(INPUT_STATES[player_id_num, input_action.dodge] == input_state.pressed){
+	if(player_stats.can_dodge) {
+		player_stats.dodging = true;
+		player_stats.can_dodge = false;
+		player_stats.can_take_damage = false;
+		
+		var _dodge_direction = point_direction(x, y, x + axisH, y + axisV);
+		//object_set_sprite(self.id, sCharacter_Dodge);
+		sprite_index = sCharacter_Dodge
+		alarm[1] = player_stats.dodge_time;
+		player_stats.can_move = false;
+		motion_set(_dodge_direction, player_stats.dodge_speed);	
+	}
+}
+
 if(INPUT_STATES[player_id_num, input_action.shoot] != input_state.none && player_stats.can_shoot){
 	if(!weapon.shooting){
 		weapon.shooting = true;
