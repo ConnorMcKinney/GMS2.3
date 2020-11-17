@@ -5,6 +5,8 @@ if(player_stats.can_move){
 	if (this_gamepad_id == -1) {	
 	axisH = input_held(player_id_num, input_action.right)	-input_held(player_id_num, input_action.left);
 	axisV = input_held(player_id_num, input_action.down)	-input_held(player_id_num, input_action.up);
+	
+	player_stats.last_aim_angle = darctan2(-(mouse_y-y), (mouse_x-x));
 
 	} else {
 		//MOVEMENT
@@ -15,7 +17,7 @@ if(player_stats.can_move){
 			axisH = 0;
 			axisV = 0;
 		}
-		show_debug_message(string(axisH) + ", " + string(axisV));
+		//show_debug_message(string(axisH) + ", " + string(axisV));
 		//show_debug_message(string(INPUT_STATES[player_id, input_action.analogue_lx]) + ", " + string(INPUT_STATES[player_id, input_action.analogue_ly]))
 		
 		//AIM
@@ -62,7 +64,7 @@ if (axisV = 0){
 
 //var _move_direction = point_direction(0, 0, hspd+stats[| player_stats.impulse]*sign(axisH), player_stats.vspd+stats[| player_stats.impulse]*sign(axisV));
 var _move_direction = point_direction(0, 0, player_stats.hspd, player_stats.vspd);
-show_debug_message(clamp( sqrt( sqr(player_stats.hspd) + sqr(player_stats.vspd) )*clamp( sqrt( sqr(axisH) + sqr(axisV) ), 0, 1), 0, player_stats.max_speed));
+//show_debug_message(clamp( sqrt( sqr(player_stats.hspd) + sqr(player_stats.vspd) )*clamp( sqrt( sqr(axisH) + sqr(axisV) ), 0, 1), 0, player_stats.max_speed));
 spd = sqrt( sqr(player_stats.hspd) + sqr(player_stats.vspd) );
 //show_debug_message(_move_direction)
 if(spd > player_stats.max_speed){
@@ -183,8 +185,10 @@ if (INPUT_STATES[player_id_num, input_action.build] == input_state.pressed) {
 	if (layer_get_visible("Shop")){
 		layer_set_visible("Shop", false);
 		instance_deactivate_layer("Shop");
+		player_set_stat("all", "can_shoot", true);
 	}else{
 		layer_set_visible("Shop", true);
 		instance_activate_layer("Shop");
+		player_set_stat("all", "can_shoot", false);
 	}	
 }

@@ -16,9 +16,9 @@ if num_players_spawned < num_players_connected {
 	for ( var player_id_num = 0; player_id_num < ds_list_size(PLAYER_GAMEPAD_IDS); player_id_num++){
 		/* This convenient spawn_player() script will let us spawn a player instance and
 		assign them a player ID. If the player is already spawned, the script will do nothing! */
-		spawn_player(player_id_num);
-		
-	
+		with(spawn_player(player_id_num)) {
+			create_cameras();
+		}
 	}
 }
 else if num_players_spawned > num_players_connected {
@@ -26,8 +26,9 @@ else if num_players_spawned > num_players_connected {
 	player instances that are no longer needed by despawning them. */
 	
 	for ( var player_id_num = num_players_spawned-1; player_id_num >= num_players_connected; player_id_num--){		
-		despawn_player(player_id_num);
-		
+		with(despawn_player(player_id_num)) {
+			create_cameras();
+		}
 	}	
 }
 

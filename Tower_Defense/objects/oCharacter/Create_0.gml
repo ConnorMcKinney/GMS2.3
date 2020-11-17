@@ -30,7 +30,7 @@ player_stats = {
     };
 
 cursor_sprite = sShooting_cursor;
-//window_set_cursor(cr_none)
+window_set_cursor(cr_none)
 
 enum hud{
 	heart_pos_x = 16,

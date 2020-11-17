@@ -14,7 +14,7 @@ if (ang <= 60) {
 } else {
 	spr = 3	
 }
-show_debug_message(scale);
+//show_debug_message(scale);
 draw_sprite_ext(sPistol_weapon, spr, x + lengthdir_x(32, player_stats.last_aim_angle), -10 + bbox_top + lengthdir_y(32, player_stats.last_aim_angle), 1, scale, player_stats.last_aim_angle, c_white, 1);
 draw_self();
 
