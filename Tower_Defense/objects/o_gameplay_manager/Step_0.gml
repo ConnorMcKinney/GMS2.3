@@ -26,9 +26,8 @@ else if num_players_spawned > num_players_connected {
 	player instances that are no longer needed by despawning them. */
 	
 	for ( var player_id_num = num_players_spawned-1; player_id_num >= num_players_connected; player_id_num--){		
-		with(despawn_player(player_id_num)) {
-			create_cameras();
-		}
+		despawn_player(player_id_num)
+		create_cameras();
 	}	
 }
 
